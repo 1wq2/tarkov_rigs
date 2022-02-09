@@ -1,8 +1,8 @@
-from tests.coverage.test_base import BaseTest
+from tests.coverage.test_base import TestBase
 from pages.book_page import BookPage
 
 
-class TestBook(BaseTest):
+class TestBook(TestBase):
     def test_merch_button(self):
         page = BookPage(self.driver)
         page.click(*BookPage.MERCH_BUTTON)

@@ -1,8 +1,8 @@
-from tests.coverage.test_base import BaseTest
+from tests.coverage.test_base import TestBase
 from pages.preorder_page import PreorderPage
 
 
-class TestPreorder(BaseTest):
+class TestPreorder(TestBase):
     def test_preorder_button(self):
         page = PreorderPage(self.driver)
         page.click(*PreorderPage.PREORDER_BUTTON)

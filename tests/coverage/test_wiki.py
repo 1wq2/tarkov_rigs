@@ -1,8 +1,8 @@
-from tests.coverage.test_base import BaseTest
+from tests.coverage.test_base import TestBase
 from pages.wiki_page import WikiPage
 
 
-class TestWiki(BaseTest):
+class TestWiki(TestBase):
     def test_wiki_button(self):
         page = WikiPage(self.driver)
         page.click_wiki_button()

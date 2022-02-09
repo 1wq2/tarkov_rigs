@@ -1,7 +1,7 @@
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, ElementNotVisibleException
 
 
 class BasePage(object):
@@ -44,3 +44,11 @@ class BasePage(object):
         element = WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located(locator))
         element.click()
+
+    def is_element_exist(self, *locator):
+        try:
+            self.driver.find_element(*locator)
+            return True
+        except ElementNotVisibleException:
+            return False
+
