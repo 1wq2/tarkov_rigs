@@ -1,3 +1,4 @@
+import time
 from tests.coverage.test_base import TestBase
 from pages.sorting_page import SortingPage
 
@@ -18,9 +19,11 @@ class TestSorting(TestBase):
 
     def test_record_data(self):
         page = SortingPage(self.driver)
-        page.wait_element(*SortingPage.RECORDS)
+        page.wait_elements(*SortingPage.RECORDS)
         records = self.driver.find_elements(*SortingPage.RECORDS)
-        print(records.count())
-        assert records.count() == 100
-        levels = [int(self.driver.find_elements(*SortingPage.LEVEL_DATA).text)]
-        assert all(1 <= i <= 50 for i in levels) is True
+        print(len(records))
+        assert len(records) == 100
+        level_data = self.driver.find_elements(*SortingPage.LEVEL_DATA)
+        levels = [int(el.text) for el in level_data]
+        print(levels)
+        assert all(1 <= i <= 58 for i in levels) is True

@@ -33,6 +33,13 @@ class BasePage(object):
             print("\n * ELEMENT NOT FOUND WITHIN GIVEN TIME! --> %s" % (locator[1]))
             self.driver.quit()
 
+    def wait_elements(self, *locator):
+        try:
+            WebDriverWait(self.driver, 10).until(EC.visibility_of_all_elements_located(locator))
+        except TimeoutException:
+            print("\n * ELEMENTS NOT FOUND WITHIN GIVEN TIME! --> %s" % (locator[1]))
+            self.driver.quit()
+
     def wait_page(self, driver):
         try:
             WebDriverWait(driver, 5).until(EC.url_changes)
@@ -51,4 +58,3 @@ class BasePage(object):
             return True
         except ElementNotVisibleException:
             return False
-
