@@ -26,7 +26,6 @@ class BasePage(object):
         #     EC.visibility_of_element_located(locator))
         # ActionChains(self.driver).move_to_element(element).perform()
 
-
     def wait_element(self, *locator):
         try:
             WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
@@ -45,5 +44,3 @@ class BasePage(object):
         element = WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located(locator))
         element.click()
-
-
